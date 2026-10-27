@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Dune Messiah",
+    "author": "Frank Herbert",
+    "genre": "Sci-Fi",
+    "status": "Finished"
+  },
+  {
+    "id": 2,
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genre": "Sci-Fi",
+    "status": "Reading"
+  }
+]
