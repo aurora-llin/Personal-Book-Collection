@@ -47,3 +47,12 @@ def update_book(books, book_id, title, author, genre, status):
     book["status"] = status
     save_books(books)
     return True
+
+def delete_book(books, book_id):
+    book = find_by_id(books, book_id)
+    if book is None:
+        return False
+    books.remove(book)
+    save_books(books)
+    return True
+
