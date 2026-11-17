@@ -1,38 +1,22 @@
 import storage
 from book import Book, VALID_STATUS, check_text, validate_book
-
-
 class BookNotFound(Exception):
     """No book has the requested ID."""
-
-
 class BookManager:
     def __init__(self, data_file):
         self.data_file = data_file
-        # A dictionary keyed by ID: finding, updating or deleting a book by
-        # its ID is a direct lookup, and the same ID cannot be stored twice.
         self.books = {}
 
     # ----- loading and saving -----
-
     def load(self):
         """Load saved books. Returns a message to show, or None if all is fine."""
-        try:
-            records = storage.load_records(self.data_file)
-            loaded = {}
-            for record in records:
-                book = self.record_to_book(record)
-                if book.id in loaded:
-                    raise storage.DataFileError("an ID appears twice")
-                loaded[book.id] = book
-            self.books = loaded
-            return None
-        except storage.DataFileError as error:
-            backup = storage.preserve_damaged_file(self.data_file)
-            self.books = {}
-            return ("Your data file is damaged (" + str(error) + ").\n"
-                    "The original was kept as '" + backup + "'.\n"
-                    "Starting with an empty library.")
+        records = storage.load_records(self.data_file)
+        loaded = {}
+        for record in records:
+            book = self.record_to_book(record)
+            loaded[book.id] = book
+        self.books = loaded
+        return None
 
     def record_to_book(self, record):
         """Turn one saved record into a Book, or raise DataFileError."""
