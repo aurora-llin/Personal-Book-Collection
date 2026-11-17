@@ -1,58 +1,46 @@
 import json
+import os
+from datetime import datetime
 
-DATA_FILE = "books.json"
-VALID_STATUS = ["Not Started", "Reading", "Finished"]
 
-def load_books():
+class DataFileError(Exception):
+    """The file exists but its contents are damaged."""
+
+
+class StorageError(Exception):
+    """The file could not be read, saved, or moved."""
+
+
+def load_records(path):
+    """Return the saved list of records. A missing file means no records yet."""
     try:
-        with open(DATA_FILE, "r") as f:
-            return json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
         return []
+    except ValueError:
+        raise DataFileError("the file is not valid JSON")
+    except OSError as error:
+        raise StorageError("Could not read " + path + ": " + str(error))
+    if not isinstance(data, list):
+        raise DataFileError("the file does not contain a list of records")
+    return data
 
-def save_books(books):
-    with open(DATA_FILE, "w") as f:
-        json.dump(books, f, indent=2)
 
-def next_id(books):
-    if not books:
-        return 1
-    return max((book["id"]) for book in books) + 1
+def save_records(path, records):
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(records, f, indent=2)
+    except OSError as error:
+        raise StorageError("Could not save to " + path + ": " + str(error))
 
-def add_book(books, title, author, genre, status):
-    book = {
-        "id": next_id(books),
-        "title": title,
-        "author": author,
-        "genre": genre,
-        "status": status
-    }
-    books.append(book)
-    save_books(books)
-    return book
 
-def find_by_id(books, book_id):
-    for book in books:
-        if book["id"] == book_id:
-            return book
-    return None
-
-def update_book(books, book_id, title, author, genre, status):
-    book = find_by_id(books, book_id)
-    if book is None:
-        return False
-    book["title"] = title
-    book["author"] = author
-    book["genre"] = genre
-    book["status"] = status
-    save_books(books)
-    return True
-
-def delete_book(books, book_id):
-    book = find_by_id(books, book_id)
-    if book is None:
-        return False
-    books.remove(book)
-    save_books(books)
-    return True
-
+def preserve_damaged_file(path):
+    """Rename a damaged file (never delete it) and return its new name."""
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    new_name = path + ".damaged-" + stamp
+    try:
+        os.replace(path, new_name)
+    except OSError as error:
+        raise StorageError("Could not preserve damaged file: " + str(error))
+    return new_name
