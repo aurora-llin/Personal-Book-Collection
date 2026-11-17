@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "genre": "Self-Help",
+    "status": "Finished"
+  },
+  {
+    "id": 2,
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "status": "Reading"
+  },
+  {
+    "id": 3,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Fiction",
+    "status": "Finished"
+  },
+  {
+    "id": 4,
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "status": "Not Started"
+  },
+  {
+    "id": 5,
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "genre": "Technology",
+    "status": "Reading"
+  },
+  {
+    "id": 6,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "status": "Finished"
+  },
+  {
+    "id": 7,
+    "title": "Educated",
+    "author": "Tara Westover",
+    "genre": "Memoir",
+    "status": "Not Started"
+  },
+  {
+    "id": 8,
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "genre": "Self-Help",
+    "status": "Finished"
+  },
+  {
+    "id": 9,
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "genre": "Science Fiction",
+    "status": "Not Started"
+  },
+  {
+    "id": 10,
+    "title": "Python Crash Course",
+    "author": "Eric Matthes",
+    "genre": "Technology",
+    "status": "Reading"
+  }
+]
