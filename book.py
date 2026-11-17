@@ -2,16 +2,19 @@ VALID_STATUS = ["Not Started", "Reading", "Finished"]
 
 
 def check_text(value, name):
+    #This one is for checking and making sure the value is a string and not empty
     if not isinstance(value, str) or value.strip() == "":
         raise ValueError(name + " is required.")
     return value.strip()
 
 
 def validate_book(title, author, genre, status):
+    #This function validates the book information and returns the validated values.
     title = check_text(title, "Title")
     author = check_text(author, "Author")
     genre = check_text(genre, "Genre")
     status = check_text(status, "Status")
+    #This one is for checking and making sure the status is one of the valid statuses
     for valid in VALID_STATUS:
         if status.lower() == valid.lower():
             return title, author, genre, valid

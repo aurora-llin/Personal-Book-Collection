@@ -35,12 +35,3 @@ def save_records(path, records):
         raise StorageError("Could not save to " + path + ": " + str(error))
 
 
-def preserve_damaged_file(path):
-    """Rename a damaged file (never delete it) and return its new name."""
-    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    new_name = path + ".damaged-" + stamp
-    try:
-        os.replace(path, new_name)
-    except OSError as error:
-        raise StorageError("Could not preserve damaged file: " + str(error))
-    return new_name
