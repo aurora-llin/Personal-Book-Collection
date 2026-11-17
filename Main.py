@@ -10,10 +10,10 @@ def show_books(books, empty_message):
     if len(books) == 0:
         print("\n" + empty_message)
         return
-    print("\nID   Title                          Author               Genre           Status")
+    print("\nID   Title                          Author               Genre                Status")
     print("-" * 85)
     for b in books:
-        print(f"{b.id:<4} {b.title[:29]:<30} {b.author[:19]:<20} {b.genre[:14]:<15} {b.status}")
+        print(f"{b.id:<4} {b.title[:29]:<30} {b.author[:19]:<20} {b.genre[:19]:<20} {b.status}")
 
 
 def add_book(manager):
