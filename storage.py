@@ -28,9 +28,10 @@ def load_records(path):
 
 
 def save_records(path, records):
+    text = json.dumps(records, indent=2)
     try:
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(records, f, indent=2)
+            f.write(text)
     except OSError as error:
         raise StorageError("Could not save to " + path + ": " + str(error))
 
