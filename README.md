@@ -18,11 +18,11 @@ Safe error handling: invalid input, unknown IDs, and a missing data file do not 
 
 Requirements: Python 3.8 or newer. No extra packages are needed.
 
-1.Check that Python is installed:
+1. Check that Python is installed:
 
 python --version
 
-2.Clone this repository (or download and unzip it), then open a terminal in the project folder:
+2. Clone this repository (or download and unzip it), then open a terminal in the project folder:
 
 git clone <your-repository-url>
 cd <project-folder>
@@ -34,6 +34,7 @@ python main.py
 ## Files
 
 Personal-Book_Collection/
+
 ├── main.py       # Menu and user interface
 ├── manager.py    # BookManager class: the program logic
 ├── book.py       # Book class and validation rules
