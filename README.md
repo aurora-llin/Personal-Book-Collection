@@ -20,17 +20,19 @@ Requirements: Python 3.8 or newer. No extra packages are needed.
 
 1. Check that Python is installed:
 
-python --version
+```python --version```
 
 2. Clone this repository (or download and unzip it), then open a terminal in the project folder:
 
+```
 git clone <your-repository-url>
 cd <project-folder>
+```
 
 3. Run the program from inside that folder:
-
+```
 python main.py
-
+```
 ## Files
 
 ```text
