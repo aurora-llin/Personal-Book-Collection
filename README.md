@@ -33,13 +33,13 @@ python main.py
 
 ## Files
 
-Personal-Book_Collection/
-
+```text Personal-Book_Collection/
 ├── main.py       # Menu and user interface
 ├── manager.py    # BookManager class: the program logic
 ├── book.py       # Book class and validation rules
 ├── storage.py    # Reading and writing the JSON file
 └── books.json    # Saved books (created automatically)
+```
 
 - Main.py:  The menu and user interface. Shows the main menu, reads the
             user's input, displays books and summaries, and asks for confirmation before
