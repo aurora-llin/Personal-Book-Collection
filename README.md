@@ -33,7 +33,8 @@ python main.py
 
 ## Files
 
-```text Personal-Book_Collection/
+```text
+Personal-Book_Collection/
 ├── main.py       # Menu and user interface
 ├── manager.py    # BookManager class: the program logic
 ├── book.py       # Book class and validation rules
