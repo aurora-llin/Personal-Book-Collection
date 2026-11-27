@@ -7,7 +7,7 @@ class BookManager:
         self.data_file = data_file
         self.books = {}
 
-    # ----- loading and saving -----
+    # loading and saving 
     def load(self):
         """Load saved books. Returns a message to show, or None if all is fine."""
         records = storage.load_records(self.data_file)
@@ -37,7 +37,7 @@ class BookManager:
         records = [book.to_dict() for book in self.all_books()]
         storage.save_records(self.data_file, records)
 
-    # ----- add, get, update, delete -----
+    # add, get, update, delete 
 
     def next_id(self):
         if len(self.books) == 0:
@@ -79,7 +79,7 @@ class BookManager:
         del self.books[book.id]
         self.save()
 
-    # ----- viewing, searching, summary -----
+    # viewing, searching, summary
 
     def all_books(self):
         return sorted(self.books.values(), key=lambda book: book.id)
